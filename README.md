@@ -19,7 +19,7 @@ If you’re early in your ML journey, or just looking to see how models can be d
 
 ## Goals (Live Roadmap)
 
-- ✅ Build an MLP in PyTorch from scratch (mirroring micrograd)
+- [ ] Build 'interpretable' MLP for experimentation
 - [ ] Train on MNIST and log internal states (activations, logits)
 - [ ] Visualize training dynamics (loss curves, activation heatmaps)
 - [ ] Apply PCA to intermediate activations
@@ -31,7 +31,6 @@ If you’re early in your ML journey, or just looking to see how models can be d
 
 | Notebook | Purpose |
 |---------|---------|
-| `00_MLP_from_scratch_PyTorch.ipynb` | Scalar → MLP from first principles (for learning) |
 | `01_MLP_for_Interpretability.ipynb` | Clean, inspectable PyTorch MLP with hooks |
 | `02_Train_on_MNIST_and_Log.ipynb` | Full MNIST training loop with activation capture |
 | `03_Analyze_Activations.ipynb` | PCA, neuron-level insights, visualizations |
