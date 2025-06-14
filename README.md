@@ -4,19 +4,41 @@
 
 **This is a work in progress...**  This notebook is part of a live, educational build as I learn and explore interpretability tools from the ground up. It will be updated regularly with new experiments, edits, and insights. Suggestions and issues are always welcome!
 
-## 💭 What is it?
-<!--This repo is part of my transition into machine learning, with a focus on interpretability and alignment. I have more legitimate interpretability project in mind but wanted to also start with the basics (hence MLP) where everything is simple and visualizations are easy to come by. I am also hoping for this to be somewhat educational for those on a similar path or looking to build some fun ML projects with interpretability options throughout. Like many of my projects, the primary goal here is to learn by building — using hands-on experimentation/basic explainations to deepen my understanding (and hopefully help others!).-->
-This repo is part of my transition into machine learning, with a focus on interpretability and alignment. I have more advanced, domain-relevant projects in mind — but I wanted to begin with something fundamental: easy to visualize, easy to explain, and a natural continuation of my earlier **micrograd** build. 
+## 💡 What is this?
 
-> ENTER: The MLP on MNIST 😎
+This repo is part of my shift from pure mathematics into machine learning, with a specific focus on **interpretability** and **alignment**. While I have more advanced projects in progress (LLMs, AlphaZero-style agents, etc.), I wanted to start with something clean, visual, and controllable:
 
-My goal here (and in general) is to learn by building, and to document the process in a way that's accessible to others on a similar path. If you're just getting started in ML or looking for hands-on ways to understand interpretability as you go, I hope this project is useful.
+> A multi-layer perceptron trained on MNIST — the simplest neural microscope I could build.
 
-## 🛸 Overview (for now):
-Below is a list of things that I plan to do... but I also plan to write a fair deal as I go. 
-- I'm training an MLP on MNIST using PyTorch (mirroring my earlier micrograd build).
-- Along the way, I’m hoping to explore numerous interpretability tools: activation tracking, neuron behavior, PCA visualizations, and more.
-- I’ll then extend the model to a CNN, compare to MLP, and continue experimenting from there.
-- The explanations are meant to be beginner-accessible but technically grounded — let me know where/how I can improve!
+I hope for this project to be both a **learning tool** and a **teaching resource**. It’s meant to walk through:
+- How to build an MLP from scratch (mirroring my [micrograd](/zero-to-hero-course/episode-1) architecture)
+- How to track internal activations and neuron behaviors
+- How to begin asking interpretability questions about hidden representations
 
+If you’re early in your ML journey, or just looking to see how models can be dissected from first principles — I hope this is useful.
+
+## Goals (Live Roadmap)
+
+- ✅ Build an MLP in PyTorch from scratch (mirroring micrograd)
+- [ ] Train on MNIST and log internal states (activations, logits)
+- [ ] Visualize training dynamics (loss curves, activation heatmaps)
+- [ ] Apply PCA to intermediate activations
+- [ ] Investigate neuron specialization and representation drift
+- [ ] Extend to CNN for comparison
+- [ ] Prepare model and logs for deeper interpretability tools (e.g., TransformerLens-style analysis)
+
+## Notebooks (Growing List)
+
+| Notebook | Purpose |
+|---------|---------|
+| `00_MLP_from_scratch_PyTorch.ipynb` | Scalar → MLP from first principles (for learning) |
+| `01_MLP_for_Interpretability.ipynb` | Clean, inspectable PyTorch MLP with hooks |
+| `02_Train_on_MNIST_and_Log.ipynb` | Full MNIST training loop with activation capture |
+| `03_Analyze_Activations.ipynb` | PCA, neuron-level insights, visualizations |
+
+## Philosophy
+
+I learn by building — not just by reading. This repo reflects that. The goal isn’t to “beat MNIST,” but to **see what’s happening inside**. I want to understand how even small networks form internal representations, and how we might design tools to probe, interpret, and improve them.
+
+If you have suggestions, corrections, or want to riff on any of this — open an issue or drop me a message.
   
