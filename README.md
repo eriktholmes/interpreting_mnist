@@ -4,11 +4,11 @@
 
 **This is a work in progress...**  This notebook is part of a live, educational build as I learn and explore interpretability tools from the ground up. It will be updated regularly with new experiments, edits, and insights. Suggestions and issues are always welcome!
 
-## 💡 What is this?
+## ❓ What is this?
 
 This repo is part of my shift from pure mathematics into machine learning, with a specific focus on **interpretability** and **alignment**. While I have more advanced projects in progress (LLMs, AlphaZero-style agents, etc.), I wanted to start with something clean, visual, and controllable:
 
-> A multi-layer perceptron trained on MNIST — the simplest neural microscope I could build.
+> A multi-layer perceptron trained on MNIST — the natural next step from Micrograd and a simple landscape to start using interpretability tools.
 
 I hope for this project to be both a **learning tool** and a **teaching resource**. It’s meant to walk through:
 - How to build an MLP from scratch (mirroring my [micrograd](/zero-to-hero-course/episode-1) architecture)
@@ -38,7 +38,7 @@ If you’re early in your ML journey, or just looking to see how models can be d
 
 ## Philosophy
 
-I learn by building — not just by reading. This repo reflects that. The goal isn’t to “beat MNIST,” but to **see what’s happening inside**. I want to understand how even small networks form internal representations, and how we might design tools to probe, interpret, and improve them.
+I learn by building things/working on projects: this repo reflects that. The goal is to **see what’s happening inside** of an MLP network trained on MNIST. I want to understand how even small networks form internal representations, and how we might design tools to probe, interpret, and improve them. This is one of many projects with an interpretability focus but I figured I would start here with the basics. 
 
-If you have suggestions, corrections, or want to riff on any of this — open an issue or drop me a message.
+If you have suggestions, corrections, or other feedback let me know!
   
