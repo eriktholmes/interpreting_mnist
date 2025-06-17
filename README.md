@@ -1,41 +1,82 @@
 # Interpretability applied to MNIST
 
-⚠️ ***WARNING, WARNING, WARNING*** (Voiced by Kevin Malone) 
+> ⚠️ ***WARNING, WARNING, WARNING*** (Voiced by Kevin Malone)  
+>
+> This repo is part of a live, interpretability-focused build process. It's updated regularly with new experiments, diagnostics, and reflections. Feedback is welcome.
 
-**This is a work in progress...**  This notebook is part of a live, educational build as I learn and explore interpretability tools from the ground up. It will be updated regularly with new experiments, edits, and insights. Suggestions and issues are always welcome!
 
-## ❓ What is this?
+## ❓ What is this Repo for ❓
 
-This repo is part of my shift from pure mathematics into machine learning, with a specific focus on **interpretability** and **alignment**. While I have more advanced projects in progress (LLMs, AlphaZero-style agents, etc.), I wanted to start with something clean, visual, and controllable:
+This repo investigates how small neural networks trained on MNIST internally represent data — and how their behavior changes with normalization. The goal is to analyze activation dynamics, neuron specialization, and the effects of architectural and input changes using simple, interpretable setups.
 
-> A multi-layer perceptron trained on MNIST — the natural next step from Micrograd and a simple landscape to start using interpretability tools.
 
-I hope for this project to be both a **learning tool** and a **teaching resource**. It’s meant to walk through:
-- How to build an MLP from scratch (mirroring my [micrograd](/zero-to-hero-course/episode-1) architecture)
+## ✈️ Overview 
+1) MLP experimentation (current task): We train a basic MLP on raw and normalized MNIST inputs, log internal states, track activation sparsity over training, and visualize how internal representations shift.
+2) CNN experimentation (coming soon): We extend the same tools and analysis to a simple convolutional network. The goal is to compare how spatially-aware architectures differ from vectorized MLPs.
+
+### Learning objectives  
+This repo is intended to be both a learning tool and a educational resource. It walks through:
+- How to build and probe a basic MLP on MNIST using PyTorch
+- How neuron activations evolve during training
+- How normalization impacts internal representations
+- How to visualize dead neurons, representation drift, and layer dynamics
+- More to come...
+
+
+
+<!--
+### 🥅 Goals
+The goal is to turn this into a blog post or educational writeup on activations, dead neurons, and normalization effects in MLPs. This will be part of a broader interpretability portfolio including toy circuits and LLM probing.
+
+
+## 💭 My hopes
+- How to build an interpretable MLP (mirroring my [micrograd](/zero-to-hero-course/episode-1) architecture)
 - How to track internal activations and neuron behaviors
 - How to begin asking interpretability questions about hidden representations
-
 If you’re early in your ML journey, or just looking to see how models can be dissected from first principles — I hope this is useful.
+-->
 
-## Goals (Live Roadmap)
+## Progress tracking (Live Roadmap)
 
-- [ ] Build 'interpretable' MLP for experimentation
-- [ ] Train on MNIST and log internal states (activations, logits)
+### MLP: 
+- [✔️] Build a basic 'interpretable' MLP for experimentation
+
+#### Baseline experimentation (without normalizing the MNIST data)
+- [✔️] Train on MNIST (raw data)
+- [✔️] log internal statistics during training (linear layers, activations, logits)
+- [ ] Add hooks to MLP
+- [ ] log internal states over training
 - [ ] Visualize training dynamics (loss curves, activation heatmaps)
 - [ ] Apply PCA to intermediate activations
 - [ ] Investigate neuron specialization and representation drift
+
+### Comparative experimentation: Normalized data and experiments
+- [ ] Train on MNIST 
+- [ ] Log internal states (activations, logits)
+- [ ] Compare activation distributions across training (unnormalized vs normalized)
+- [ ] Evaluate dead neuron rates and gradient flow
+- [ ] Visualize how normalization impacts representation structure (via PCA)
+
+
+
+### Mirror the experiments above with CNN
 - [ ] Extend to CNN for comparison
 - [ ] Prepare model and logs for deeper interpretability tools (e.g., TransformerLens-style analysis)
+
+
+
 
 ## Notebooks (Growing List)
 
 | Notebook | Purpose |
 |---------|---------|
-| `01_MLP_for_Interpretability.ipynb` | Clean, inspectable PyTorch MLP with hooks |
-| `02_Train_on_MNIST_and_Log.ipynb` | Full MNIST training loop with activation capture |
-| `03_Analyze_Activations.ipynb` | PCA, neuron-level insights, visualizations |
+| `01_MLP_for_Interpretability_non_normalized.ipynb` | Interpretable PyTorch MLP trained on raw MNIST input (hooks, dead neurons, histograms) |
+| `02_MLP_for_Interpretability_normalized.ipynb` | Normalized-input training + PCA/activation comparisons |
+| `03_CNN_for_Interpretability.ipynb`| (planned) Convolutional analog of the above, with same diagnostics|
 
-## Philosophy
+
+
+## Why this❓❓
 
 I learn by building things/working on projects: this repo reflects that. The goal is to **see what’s happening inside** of an MLP network trained on MNIST. I want to understand how even small networks form internal representations, and how we might design tools to probe, interpret, and improve them. This is one of many projects with an interpretability focus but I figured I would start here with the basics. 
 
