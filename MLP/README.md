@@ -25,7 +25,7 @@ Here are a few of the visuals produced in the document. The first table highligh
 | -------- | ------- |
 | <img width="500" alt="Layer1_activations_across_epochs" src="https://github.com/user-attachments/assets/a0ac470d-ac03-4aa6-bd0d-2f0e7a8cf594" /> | <img width="500" alt="ReLU1_activations_across_epochs" src="https://github.com/user-attachments/assets/61eddf38-4671-4170-aef9-d1e48e2aa1df" /> |
 
-| Class 0 mean/std evolution | Class 3 mean/std evolution |
+| Class 0 mean/std evolution | Class 8 mean/std evolution |
 | ---------| --------- |
 |<img width="661" alt="class0_stats_across_epochs" src="https://github.com/user-attachments/assets/32acff13-0b6f-4bf5-a338-542cbcd7056e" />|<img width="625" alt="class3_stats_across_epochs" src="https://github.com/user-attachments/assets/bc2a2cbb-5fcb-4f12-b130-b6264529df13" />|
 
