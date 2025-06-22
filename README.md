@@ -12,7 +12,9 @@ This repo investigates how small neural networks trained on MNIST internally rep
 
 ## ✈️ Overview 
 1) MLP experimentation (current task): We train a basic MLP on raw and normalized MNIST inputs, log internal states, track activation sparsity over training, and visualize how internal representations shift.
-2) CNN experimentation (coming soon): We extend the same tools and analysis to a simple convolutional network. The goal is to compare how spatially-aware architectures differ from vectorized MLPs.
+     - The first goal is to showcase the importance of normalization: we investigate activation mean/variance within the model, as well as neuron health, before and after normalization. Towards this we will cover techniques to probe the internals of the network, from simply logging activations in forward passes to implementing hooks for gradient tracking. We will also use activation heatmaps, and PCA to try and 'see' what the model is doing. 
+     - Ultimately, one of the goals is to understand things commonly discussed in interpretability like polysemanticity, and superposition. Towards that we will investigate 
+3) CNN experimentation (coming soon): We extend the same tools and analysis to a simple convolutional network. The goal is to compare how spatially-aware architectures differ from vectorized MLPs.
 
 ### Learning objectives  
 This repo is intended to be both a learning tool and a educational resource. It walks through:
