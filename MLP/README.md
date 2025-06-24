@@ -4,7 +4,7 @@ This folder contains a deep dive into a simple Multilayer Perceptron (MLP) train
 
 
 
-# 📘 Notebook 01: Activation Dynamics in a Non-Normalized MLP
+## 📓 Notebook 01: Activation Dynamics in a Non-Normalized MLP (Part I)
 
 This notebook analyzes the internal behavior of a simple MLP trained on raw (non-normalized) MNIST data. Our focus is on **tracking representational drift**—how layer activations evolve across epochs—and identifying early signs of **instability or inefficiency** in learning.
 
@@ -42,7 +42,7 @@ This second set focuses on the digits **0** and **8**, chosen for their visual s
 |<img width="661" alt="class0_stats_across_epochs" src="https://github.com/user-attachments/assets/32acff13-0b6f-4bf5-a338-542cbcd7056e" />|<img width="625" alt="class3_stats_across_epochs" src="https://github.com/user-attachments/assets/bc2a2cbb-5fcb-4f12-b130-b6264529df13" />|
 
 
-## 📉 Summary & Takeaways
+### 📉 Summary & Takeaways
 
 - **Activation means** drift across epochs: experiencing sharp spikes across classes early in training, with gradual decline but remain elevated. 
 - **Variance increases** across epochs—potential early sign of exploding activations.
@@ -64,6 +64,12 @@ These findings motivate a follow-up exploration of neuron health and specializat
 This MLP serves as a clean, interpretable baseline.  Motivated by some of the Kaparthy Zero-to-Hero videos we figured MNIST was a nice place to start interpretability experiments and that we should really begin by investigating raw (non-normalized) data. 
 
 ---
+
+
+## 📓 Notebook 02: Activation Dynamics in a Non-Normalized MLP (Part II)
+In this notebook we start where we left off with a basic MLP and train it without normalization. This time, we add hooks for both forward and backward analysis, tracking mean of both activations and gradients. Tomorrow we will add visualizations, PCA, and maybe UMAP!
+
+
 
 ## 🚧 What's Next?
 Upcoming notebooks will explore more interpretability tools with focus on some of the following (for now):
