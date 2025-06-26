@@ -46,11 +46,13 @@ If you’re early in your ML journey, or just looking to see how models can be d
 #### Baseline experimentation (without normalizing the MNIST data)
 - [✔️] Train on MNIST (raw data)
 - [✔️] log internal statistics during training (linear layers, activations, logits)
-- [ ] Add hooks to MLP
-- [ ] log internal states over training
-- [ ] Visualize training dynamics (loss curves, activation heatmaps)
-- [ ] Apply PCA to intermediate activations
+- [✔️] Add hooks to MLP
+- [✔️] log internal states over training
+- [✔️] Visualize training dynamics (loss curves, activation heatmaps)
+- [✔️] Apply PCA to intermediate activations
 - [ ] Investigate neuron specialization and representation drift
+- [ ] Apply t-SNE to intermediate activations
+- [ ] Apply UMAP ________ 
 
 ### Comparative experimentation: Normalized data and experiments
 - [ ] Train on MNIST 
