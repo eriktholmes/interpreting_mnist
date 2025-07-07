@@ -163,8 +163,6 @@ We plot the results of ```analyze_neuron(model, neuron_idx, test_dataset, (0,3),
 
 
 
-
-
 We see some interesting behavior and summarize our results here:
 
 
@@ -174,7 +172,7 @@ We see some interesting behavior and summarize our results here:
 >  - Scaling increases class 1 accuracy monotonically
 >  - The confusion matrix identifies that this neurons ablation causes confusion between 1 and 3
 >
-> This shows that, while the model is quite good at prediciting the class 1, this predicition lies on the shoulders of neuron 0!
+> This shows that, while the model is quite good at prediciting the class 1, this predicition lies on the shoulders of neuron 0 (i.e. we call neuron 0 a bottleneck neuron)!
 
 > **Neurons 6 (and 7)**: we observe similar behavior from these two neurons so summarize the results here
 >  - Highly selective for class 0 (classes 8 and 9)
@@ -193,12 +191,22 @@ We see some interesting behavior and summarize our results here:
 >  - The confusion matrix identifies that under ablation the model misclassifies 9 as 4
 >  - Under scaling we see the primary misclassification is the opposite, 4 is misclassified as 9
 >
-> This neuron seems somewhat unique in that the confusion is somehow bi-directional, and affects classes 4 and 9. This is interesting, as it is also very selective for class 7, it seems likely that the feature involves both a vertical stroke and maybe a top horizontal stroke?
+> This neuron seems unique in that the confusion is somewhat bi-directional, and affects classes 4 and 9: when under OR over activated it seems to collapse the boundary between 4 and 9. This is interesting, as it is also very selective for class 7, it seems likely that the feature involves both a vertical stroke and maybe a top horizontal stroke or hook shape. 
 
 
 
 > **Neuron 15**:
->  - To be filled in soon... 
+>  - This neuron was highly selective for class 2. In fact it only activated for some examples of 2 and a few for 3 and was otherwise silent.
+>  - Scaling the neurons activation had no affect on the accuracy of the model for any of the classes
+> Though this neuron is selective for 2 it is has no real influence on the model and is otherwise silent.
+
+These experiments highlight the fact that selectivity, while more informative than mean activation statistics, is only a piece of the puzzle. This extra causal analysis reveals a bit more about the network, showing how individual neurons inform the decisions of the network. The next experiment we run is PCA/UMAP on the hidden layers to visualize some of the class boundaries that form after training. Based on everything we have encountered so far we suspect that classes like 4 and 9 will experience some overlap in the projection space. 
+
+
+### Part 5: Dimensionality reduction of the hidden layers
+(To come)
+
+
 
 
 
