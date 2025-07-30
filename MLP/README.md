@@ -107,7 +107,7 @@ In code, we address the by hooking the gradients after calling ```logits[y].back
 
 
 ### Part 3: Class selectitivity
-Towards understanding neurons that are fire more for certain classes we compute the **class selectivity score** for each neuron $i$ and class $cl$.  
+Towards understanding neurons that fire more for certain classes we compute the **class selectivity score** for each neuron $i$ and class $cl$.  
 
 $$ S_{i}^{cl} = \frac{\mu_{i}^{cl} - (\mu_{i}^{rest})}{\mu_{i}^{cl} + (\mu_{i}^{rest}) + \epsilon},$$
 
@@ -207,6 +207,101 @@ These experiments highlight the fact that selectivity, while more informative th
 (To come)
 
 
+
+
+---
+
+## Notebook 3: Input & Layer Normalization
+
+In this notebook, we explore the effects of **normalizing the MNIST dataset and the internal activations of our MLP**, both from a training performance and interpretability standpoint.
+
+
+
+### Section 1: Normalizing input/model
+#### 1.1. Input Normalization
+
+We begin by standardizing the input images to have **zero mean and unit variance**:
+
+```python
+transforms.Normalize(mean=(0.1307,), std=(0.3081,))
+```
+
+
+This change alone increased the accuracy of our model across the board and after only 5 epochs the models accuracy reached a similar level to the original which had 20 epochs. After training the normalization led to an accuracy of 96.34% on the test set and class based accuracy of
+
+| Digit | Accuracy |   | Digit | Accuracy |
+|-------|----------|---|--------|----------|
+|   0   |  98.27%  |   |   1    |  98.77%  |
+|   2   |  94.38%  |   |   3    |  96.24%  |
+|   4   |  96.95%  |   |   5    |  97.09%  |
+|   6   |  96.76%  |   |   7    |  96.21%  |
+|   8   |  94.35%  |   |   9    |  94.25%  |
+
+We do, however, still notice activation drfit in the hidden layers motivating a next step in normalization... layernorm.
+
+
+#### 1.2. Normalizing the layers:
+Inspired by the *makemore series* and transformer architectures, we applied `LayerNorm` after each ReLU activation to normalize hidden activations. This re-centers each sample’s layer output to have zero mean and unit variance:
+ $$ \text{LayerNorm}(x) = \frac{x - \mu}{\sigma + \epsilon} $$
+
+The effects were mixed:
+
+- When trained for too long, the model overfit: training accuracy climbed to 98–99%, but test accuracy fell to ~95%.
+
+- Interestingly, shorter training (e.g., 9 epochs) with LayerNorm led to better generalization than the unnormalized baseline.
+
+We also experimented with:
+
+- Applying LayerNorm before vs. after ReLU
+
+-  Normalizing only one of the two hidden layers
+
+None of these consistently outperformed the default setup (LayerNorm after ReLU1 and ReLU2), but the results revealed how normalization affects training dynamics even in a small model. We ended up doing a fair amount of fiddling with the training setup here to find an 'ideal' setup that did not overfit training data and still performed well on unseen data.
+
+#### 1.3. Dropout:
+
+To reduce overfitting without manual tuning, we added Dropout after the first hidden layer (p = 0.2). While this slowed convergence, it noticeably improved test accuracy.
+
+With normalization + dropout, the model reached ~96.6% test accuracy
+
+Training accuracy decreased (to ~95.6%), but generalization improved
+
+We observed less overconfident logit distributions and more stable loss curves
+
+This tradeoff — lower train accuracy, higher test performance — is a hallmark of successful regularization.
+
+
+#### 1.4. Final normalization experiments/conclusion:
+To stabilize training and improve internal representations, we experimented with **LayerNorm** placement within the MLP.
+
+After testing several combinations, we found that the best-performing configuration was:
+
+```python
+x = ReLU(x)
+x = LayerNorm(x)
+x = Dropout(x)
+...
+x = LayerNorm(x)
+x = ReLU(x)
+```
+This setup improved test accuracy to ~96.7%, outperforming all other normalization/dropout configurations tested.
+
+I don't believe this is standard so let's hypothesize as to why this might work in our setting:
+
+- Post-ReLU LayerNorm on the first layer ensures stable centered activations going in to the second layer and helps generalization: this bits standard. 
+
+- Pre-ReLU LayerNorm on the second layer spreads incoming activations across the threshold of ReLU. The thought is that this will encourage the model to specialize and avoid entanglement. 
+
+
+#### 1.5. Final thoughts:
+I had some thoughts as I was playing around with this setup. One concern was the following:
+> Would dropout hinder/dampen some of the selectively that we saw in previous experiments.
+
+Clearly, these techniques assist in tuning the model to train efficiently and avoid over fitting (we saw this propencity to overfitting even in our small example) but I worried that some of the feature detection (or the hope of feature detection) on a neuron level might not be possible. 
+
+
+
+### Analzing the normalized model
 
 
 
